@@ -45,3 +45,44 @@ class Player:
             return heal_amount
         else:
             return 0
+        
+    #function for adding items to inventory
+        
+    def add_to_inventory(self, item):
+        self.inventory.append(item)
+
+    #Show stats function
+
+    def show_stats(self):
+        print(f"\n=== {self.name} the {self.player_class} ===")
+        print(f"HP: {self.current_hp}/{self.max_hp}")
+        print(f"Attack: {self.attack} | Defense: {self.defense}")
+        print(f"Potions: {self.potions} | Gold: {self.gold}")
+        print(f"Inventory: {', '.join(self.inventory) if self.inventory else 'Empty'}\n")
+
+    def to_dict(self):
+        return {
+            "name": self.name,
+            "player_class": self.player_class,
+            "max_hp": self.max_hp,
+            "current_hp": self.current_hp,
+            "attack": self.attack,
+            "defense": self.defense,
+            "potions": self.potions,
+            "gold": self.gold,
+            "inventory": self.inventory
+        }
+    
+    #data to support save/load via JSON
+
+    @classmethod
+    def from_dict(cls, data):
+        player = cls(data["name"], data["player_class"])
+        player.max_hp = data["max_hp"]
+        player.current_hp = data["current_hp"]
+        player.attack = data["attack"]
+        player.defense = data["defense"]
+        player.potions = data["potions"]
+        player.gold = data["gold"]
+        player.inventory = data["inventory"]
+        return player
