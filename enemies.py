@@ -8,7 +8,8 @@ class Enemy:
         "Goblin": {"hp": 40, "attack": 10, "defence": 3},
         "Dark Mage": {"hp": 50, "attack": 12, "defence": 4},
         "Orc": {"hp": 60, "attack": 14, "defence": 6},
-        "Wraith": {"hp": 45, "attack": 16, "defence": 2}
+        "Wraith": {"hp": 45, "attack": 16, "defence": 2},
+        "Undead King": {"hp": 100, "attack": 20, "defense": 8} # end boss stats
     }
 
     def __init__(self, name):
