@@ -40,3 +40,6 @@ class Enemy:
         print(f"HP: {self.current_hp}/{self.max_hp}")
         print(f"Attack: {self.attack} | Defence: {self.defence}\n")
 
+def generate_random_enemy():
+    enemy_name = random.choice(list(Enemy.ENEMY_TYPES.keys()))
+    return Enemy(enemy_name)
