@@ -51,6 +51,12 @@ def enter_dungeon(player):
 
         player.show_stats()
 
+        # Ask if the player wants to save
+        from save_load import save_game
+        save_choice = input("\nWould you like to save your game? (y/n): ").strip().lower()
+        if save_choice == "y":
+            save_game(player)
+
     # Boss room
     print("\n💀 You enter a vast chamber... the final boss awaits!\n")
     boss = Enemy("Undead King")
