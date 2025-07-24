@@ -1,3 +1,4 @@
+from utils import red, green, yellow, bold # for text cols
 import random
 from enemies import generate_random_enemy, Enemy
 from battle import battle
@@ -12,7 +13,7 @@ def enter_dungeon(player):
     while player.is_alive() and room_count < max_rooms:
         input("Press Enter to proceed to the next room...\n")
         room_count += 1
-        print(f"\n🧱 Room {room_count}\n" + "-" * 30)
+        print(bold(f"\n🧱 Room {room_count}"))
 
         # Random result of what might be found in a room with logic for each result
 
@@ -30,10 +31,10 @@ def enter_dungeon(player):
             if treasure == "gold":
                 gold_found = random.randint(10, 30)
                 player.gold += gold_found
-                print(f"You find a pile of gold! (+{gold_found} gold)")
+                print(yellow(f"You find a pile of gold! (+{gold_found} gold)"))
             elif treasure == "potion":
                 player.potions += 1
-                print("You found a healing potion!")
+                print(green("You found a healing potion!"))
             else:
                 item = random.choice(["Rusty Key", "Ancient Scroll", "Gemstone"])
                 player.add_to_inventory(item)
@@ -45,7 +46,7 @@ def enter_dungeon(player):
         elif room_type == "trap":
             trap_damage = random.randint(5, 15)
             player.take_damage(trap_damage)
-            print(f"A trap triggers! You take {trap_damage} damage.")
+            print(red(f"A trap triggers! You take {trap_damage} damage."))
         else:
             print("The room is eerily silent. Nothing happens...")
 
@@ -58,7 +59,7 @@ def enter_dungeon(player):
             save_game(player)
 
     # Boss room
-    print("\n💀 You enter a vast chamber... the final boss awaits!\n")
+    print(bold("\n💀 You enter a vast chamber... the final boss awaits!\n"))
     boss = Enemy("Undead King")
     boss.max_hp = 100
     boss.current_hp = 100

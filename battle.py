@@ -1,3 +1,4 @@
+from utils import red, green, yellow, bold # for text cols
 from enemies import Enemy
 from player import Player
 import random
@@ -22,11 +23,11 @@ def battle(player, enemy):
 
         if choice == "1":
             damage = enemy.take_damage(player.attack)
-            print(f"\nYou strike the {enemy.name} for {damage} damage!")
+            print(bold(f"\nYou strike the {enemy.name} for {damage} damage!"))
         elif choice == "2":
             healed = player.heal()
             if healed > 0:
-                print(f"\nYou used a potion and healed for {healed} HP!")
+                print(green(f"\nYou used a potion and healed for {healed} HP!"))
             else:
                 print("\nYou have no potions left!")
         elif choice == "3":
@@ -43,7 +44,7 @@ def battle(player, enemy):
         if enemy.is_alive():
             enemy_attack = enemy.attack_value()
             damage_taken = player.take_damage(enemy_attack)
-            print(f"The {enemy.name} attacks and deals {damage_taken} damage!")
+            print(red(f"The {enemy.name} attacks and deals {damage_taken} damage!"))
             time.sleep(1)
 
     # Battle ends - victory or defeat note, if vicory gain gold, random amount between 5 & 15

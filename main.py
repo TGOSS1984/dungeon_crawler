@@ -1,3 +1,4 @@
+from utils import bold, green, red, yellow # for text cols
 from save_load import save_game, load_game
 from player import Player
 from dungeon import enter_dungeon
@@ -6,10 +7,10 @@ import sys
 # Game intro
 
 def print_intro():
-    print("=" * 40)
-    print("  Welcome to the Crypt of Shadows")
-    print("      A Dungeon Crawler CLI Game")
-    print("=" * 40)
+    print(bold("=" * 40))
+    print(bold("  Welcome to the Crypt of Shadows"))
+    print(bold("      A Dungeon Crawler CLI Game"))
+    print(bold("=" * 40))
     print("\nYou must choose your class to begin.\n")
 
 # Prompt player to enter name (prompt for cannot be empty)   
@@ -60,7 +61,7 @@ def main():
             print(f"Error: {e}")
             sys.exit(1)
 
-        print(f"\nYou have chosen the path of the {player.player_class}. Good luck, {player.name}!")
+        print(green(f"\nYou have chosen the path of the {player.player_class}. Good luck, {player.name}!"))
         player.show_stats()
 
     # Connect dungeon game flow to main game loop
