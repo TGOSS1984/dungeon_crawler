@@ -56,7 +56,7 @@ class Player:
     def show_stats(self):
         print(f"\n=== {self.name} the {self.player_class} ===")
         print(f"HP: {self.current_hp}/{self.max_hp}")
-        print(f"Attack: {self.attack} | Defense: {self.defense}")
+        print(f"Attack: {self.attack} | Defence: {self.defence}")
         print(f"Potions: {self.potions} | Gold: {self.gold}")
         print(f"Inventory: {', '.join(self.inventory) if self.inventory else 'Empty'}\n")
 
@@ -67,7 +67,7 @@ class Player:
             "max_hp": self.max_hp,
             "current_hp": self.current_hp,
             "attack": self.attack,
-            "defense": self.defense,
+            "defence": self.defence,
             "potions": self.potions,
             "gold": self.gold,
             "inventory": self.inventory
@@ -81,7 +81,7 @@ class Player:
         player.max_hp = data["max_hp"]
         player.current_hp = data["current_hp"]
         player.attack = data["attack"]
-        player.defense = data["defense"]
+        player.defence = data["defence"]
         player.potions = data["potions"]
         player.gold = data["gold"]
         player.inventory = data["inventory"]
