@@ -1,0 +1,47 @@
+import random
+
+#Player / class stats
+
+class Player:
+    CLASS_STATS = {
+        "Warrior": {"max_hp": 120, "attack": 15, "defence": 10, "potions": 2},
+        "Rogue": {"max_hp": 100, "attack": 18, "defence": 7, "potions": 3},
+        "Mage": {"max_hp": 80, "attack": 22, "defence": 5, "potions": 4}
+    }
+
+    def__init__(self,name,player_class):
+    if player_class not in Player.CLASS_STATS:
+        raise ValueError(f"Invalid class: {player_class}")
+    
+    self.name = Name
+    self.player_class = player_class
+    stats = Player.CLASS_STATS[player_class]
+
+    self.max_hp = stats["max_hp"]
+    self.current_hp = self.max_hp
+    self.attack = stats["attack"]
+    self.defence = stats["defence"]
+    self.potions = stats["potions"]
+    self.gold = 0
+    self.inventory = []
+
+    #Damage Calculation - takes defence stat into account
+
+    def is_alive(self):
+        return self.current_hp > 0
+
+    def take_damage(self, amount):
+        damage = max(amount - self.defence, 1)
+        self.current_hp = max(self.current_hp - damage, 0)
+        return damage
+    
+    #Healing logic - heals for random amount between 15 & 30 hp & decrements potions if greater than 0 by 1 once used
+
+    def heal(self):
+        if self.potions > 0:
+            heal_amount = random.randint(15, 30)
+            self.current_hp = min(self.current_hp + heal_amount, self.max_hp)
+            self.potions -= 1
+            return heal_amount
+        else:
+            return 0
