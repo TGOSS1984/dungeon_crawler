@@ -45,3 +45,15 @@ def battle(player, enemy):
             damage_taken = player.take_damage(enemy_attack)
             print(f"The {enemy.name} attacks and deals {damage_taken} damage!")
             time.sleep(1)
+
+    # Battle ends - victory or defeat note, if vicory gain gold, random amount between 5 & 15
+    print("\n" + "=" * 40)
+    if player.is_alive():
+        print(f"You have defeated the {enemy.name}!")
+        gold_reward = random.randint(5, 15)
+        player.gold += gold_reward
+        print(f"You found {gold_reward} gold.")
+        return "won"
+    else:
+        print("You have fallen in battle...")
+        return "lost"
