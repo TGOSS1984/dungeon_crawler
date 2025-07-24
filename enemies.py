@@ -2,6 +2,7 @@ import random
 
 # Enemy class/stats
 
+BOSS_NAME = "Undead King" # define boss so cannot be fought randomly in rooms
 class Enemy:
     ENEMY_TYPES = {
         "Skeleton": {"hp": 30, "attack": 8, "defence": 2},
@@ -9,7 +10,7 @@ class Enemy:
         "Dark Mage": {"hp": 50, "attack": 12, "defence": 4},
         "Orc": {"hp": 60, "attack": 14, "defence": 6},
         "Wraith": {"hp": 45, "attack": 16, "defence": 2},
-        "Undead King": {"hp": 100, "attack": 20, "defence": 8} # end boss stats
+        BOSS_NAME: {"hp": 100, "attack": 20, "defence": 8} # end boss stats
     }
 
     def __init__(self, name):
@@ -44,5 +45,7 @@ class Enemy:
 # random enemy generator
 
 def generate_random_enemy():
-    enemy_name = random.choice(list(Enemy.ENEMY_TYPES.keys()))
+    # Exclude the final boss from normal encounters
+    enemy_names = [name for name in Enemy.ENEMY_TYPES if name != "Undead King"]
+    enemy_name = random.choice(enemy_names)
     return Enemy(enemy_name)
