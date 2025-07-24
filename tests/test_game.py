@@ -3,6 +3,11 @@ from player import Player
 from enemies import generate_random_enemy, Enemy
 from unittest.mock import patch
 from battle import battle
+import tempfile
+import shutil
+import os
+from save_load import save_game, load_game, SAVE_FILE
+
 
 
 # Tests for player & enemy functionality
@@ -59,3 +64,21 @@ class TestBattle(unittest.TestCase):
         enemy = Enemy("Skeleton")
         result = battle(player, enemy)
         self.assertIn(result, ["won", "lost", "fled"])
+
+# Save/Load test
+class TestSaveLoad(unittest.TestCase):
+
+    def setUp(self):
+        self.player = Player("SaveTester", "Mage")
+        self.temp_dir = tempfile.mkdtemp()
+        self.test_path = os.path.join(self.temp_dir, "save.json")
+
+    def tearDown(self):
+        shutil.rmtree(self.temp_dir)
+
+    def test_save_and_load_game(self):
+        save_game(self.player, room_count=4, path=self.test_path)
+        loaded_player, loaded_room = load_game(path=self.test_path)
+        self.assertEqual(loaded_player.name, self.player.name)
+        self.assertEqual(loaded_player.player_class, self.player.player_class)
+        self.assertEqual(loaded_room, 4)
