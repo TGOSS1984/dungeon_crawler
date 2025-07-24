@@ -1,6 +1,9 @@
 import unittest
 from player import Player
 from enemies import generate_random_enemy, Enemy
+from unittest.mock import patch
+from battle import battle
+
 
 # Tests for player & enemy functionality
 class TestPlayer(unittest.TestCase):
@@ -46,3 +49,13 @@ class TestEnemy(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
+# Battle loop tests
+class TestBattle(unittest.TestCase):
+
+    @patch('builtins.input', side_effect=["1", "1", "1"])  # Set to 1 = attack, can be changed to 2/3
+    def test_battle_victory(self, mock_input):
+        player = Player("TestFighter", "Warrior")
+        enemy = Enemy("Skeleton")
+        result = battle(player, enemy)
+        self.assertIn(result, ["won", "lost", "fled"])
