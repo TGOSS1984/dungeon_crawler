@@ -82,3 +82,17 @@ class TestSaveLoad(unittest.TestCase):
         self.assertEqual(loaded_player.name, self.player.name)
         self.assertEqual(loaded_player.player_class, self.player.player_class)
         self.assertEqual(loaded_room, 4)
+
+# Test invalid inputs
+
+class TestErrorHandling(unittest.TestCase):
+
+    def test_invalid_class_raises(self):
+        with self.assertRaises(ValueError):
+            Player("Hero", "InvalidClass")
+
+    @patch("builtins.input", side_effect=["", "  ", "Hero"])
+    def test_name_retry_on_empty_input(self, mock_input):
+        from main import get_player_name
+        name = get_player_name()
+        self.assertEqual(name, "Hero")
