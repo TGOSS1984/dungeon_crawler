@@ -1,4 +1,4 @@
-from utils import red, green, yellow, bold # for text cols
+from utils import red, green, yellow, bold  # for text cols
 from enemies import Enemy
 from player import Player
 import random
@@ -6,13 +6,16 @@ import time
 
 # Enemy appears note with logic for turn based battle, pick from 3 options
 
+
 def battle(player, enemy):
     print("\n⚔️ A wild", enemy.name, "appears!")
     enemy.show_stats()
 
     while player.is_alive() and enemy.is_alive():
         print("-" * 40)
-        print(f"Your HP: {player.current_hp}/{player.max_hp} | Potions: {player.potions}")
+        print(
+            f"Your HP: {player.current_hp}/{player.max_hp} | Potions: {player.potions}"
+        )
         print(f"{enemy.name}'s HP: {enemy.current_hp}/{enemy.max_hp}")
         print("\nChoose your action:")
         print("1. Attack")

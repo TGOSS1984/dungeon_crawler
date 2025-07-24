@@ -6,11 +6,9 @@ SAVE_FILE = "data/save.json"
 
 # Modify save date to include room progress
 
+
 def save_game(player, room_count=0, path=SAVE_FILE):
-    data = {
-        "player": player.to_dict(),
-        "room_count": room_count
-    }
+    data = {"player": player.to_dict(), "room_count": room_count}
     try:
         os.makedirs(os.path.dirname(path), exist_ok=True)
         with open(path, "w") as f:
@@ -19,7 +17,9 @@ def save_game(player, room_count=0, path=SAVE_FILE):
     except Exception as e:
         print(f"\n⚠️ Error saving game: {e}")
 
+
 # Modify load date to include room progress
+
 
 def load_game(path=SAVE_FILE):
     if not os.path.exists(path):

@@ -2,7 +2,9 @@ import random
 
 # Enemy class/stats
 
-BOSS_NAME = "Undead King" # define boss so cannot be fought randomly in rooms
+BOSS_NAME = "Undead King"  # define boss so cannot be fought randomly in rooms
+
+
 class Enemy:
     ENEMY_TYPES = {
         "Skeleton": {"hp": 30, "attack": 8, "defence": 2},
@@ -10,7 +12,7 @@ class Enemy:
         "Dark Mage": {"hp": 50, "attack": 12, "defence": 4},
         "Orc": {"hp": 60, "attack": 14, "defence": 6},
         "Wraith": {"hp": 45, "attack": 16, "defence": 2},
-        BOSS_NAME: {"hp": 100, "attack": 20, "defence": 8} # end boss stats
+        BOSS_NAME: {"hp": 100, "attack": 20, "defence": 8},  # end boss stats
     }
 
     def __init__(self, name):
@@ -24,7 +26,7 @@ class Enemy:
         self.attack = stats["attack"]
         self.defence = stats["defence"]
 
-# Enemy damage calculation and show stats
+    # Enemy damage calculation and show stats
 
     def is_alive(self):
         return self.current_hp > 0
@@ -42,7 +44,9 @@ class Enemy:
         print(f"HP: {self.current_hp}/{self.max_hp}")
         print(f"Attack: {self.attack} | Defence: {self.defence}\n")
 
+
 # random enemy generator
+
 
 def generate_random_enemy():
     # Exclude the final boss from normal encounters

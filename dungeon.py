@@ -1,13 +1,16 @@
-from utils import red, green, yellow, bold # for text cols
+from utils import red, green, yellow, bold  # for text cols
 import random
 from enemies import generate_random_enemy, Enemy
 from battle import battle
 
 # Room generation logic, max rooms 10.
 
+
 def enter_dungeon(player, room_count=0):
     print("\nYou step into the crypt. Shadows dance along the walls...\n")
-    print(f"(Resuming from Room {room_count + 1})\n") # add to display room count on load
+    print(
+        f"(Resuming from Room {room_count + 1})\n"
+    )  # add to display room count on load
     max_rooms = 10  # After 10 rooms, trigger boss
 
     while player.is_alive() and room_count < max_rooms:
@@ -55,10 +58,11 @@ def enter_dungeon(player, room_count=0):
         # Ask if the player wants to save
         from save_load import save_game
 
-        save_choice = input("\nWould you like to save your game? (y/n): ").strip().lower()
+        save_choice = (
+            input("\nWould you like to save your game? (y/n): ").strip().lower()
+        )
         if save_choice == "y":
             save_game(player, room_count)
-
 
     # Boss room
     print(bold("\n💀 You enter a vast chamber... the final boss awaits!\n"))

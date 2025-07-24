@@ -1,10 +1,11 @@
-from utils import bold, green, red, yellow # for text cols
+from utils import bold, green, red, yellow  # for text cols
 from save_load import save_game, load_game
 from player import Player
 from dungeon import enter_dungeon
 import sys
 
 # Game intro
+
 
 def print_intro():
     print(bold("=" * 40))
@@ -13,7 +14,9 @@ def print_intro():
     print(bold("=" * 40))
     print("\nYou must choose your class to begin.\n")
 
-# Prompt player to enter name (prompt for cannot be empty)   
+
+# Prompt player to enter name (prompt for cannot be empty)
+
 
 def get_player_name():
     while True:
@@ -23,7 +26,9 @@ def get_player_name():
         else:
             print("Name cannot be empty. Try again.")
 
+
 # Choose class function, print error message if not between 1&3
+
 
 def choose_class():
     print("\nChoose your class:")
@@ -40,6 +45,7 @@ def choose_class():
         else:
             print("Invalid choice. Please enter 1, 2, or 3.")
 
+
 def main():
     print_intro()
     # Save/Load function
@@ -54,7 +60,6 @@ def main():
             player = None
             room_count = 0
 
-
     if not player:
         name = get_player_name()
         player_class = choose_class()
@@ -64,7 +69,11 @@ def main():
             print(f"Error: {e}")
             sys.exit(1)
 
-        print(green(f"\nYou have chosen the path of the {player.player_class}. Good luck, {player.name}!"))
+        print(
+            green(
+                f"\nYou have chosen the path of the {player.player_class}. Good luck, {player.name}!"
+            )
+        )
         player.show_stats()
 
     # Connect dungeon game flow to main game loop
@@ -79,6 +88,7 @@ def main():
         print(f"💀 {player.name} perished in the crypt. Your journey ends here.")
     else:
         print("You fled or exited unexpectedly.")
+
 
 if __name__ == "__main__":
     main()

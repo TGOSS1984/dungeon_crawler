@@ -9,7 +9,6 @@ import os
 from save_load import save_game, load_game, SAVE_FILE
 
 
-
 # Tests for player & enemy functionality
 class TestPlayer(unittest.TestCase):
 
@@ -38,6 +37,7 @@ class TestPlayer(unittest.TestCase):
         self.player.add_to_inventory("Gemstone")
         self.assertIn("Gemstone", self.player.inventory)
 
+
 class TestEnemy(unittest.TestCase):
 
     def test_generate_random_enemy(self):
@@ -52,18 +52,23 @@ class TestEnemy(unittest.TestCase):
         self.assertTrue(damage >= 1)
         self.assertEqual(enemy.current_hp, hp_before - damage)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     unittest.main()
+
 
 # Battle loop tests
 class TestBattle(unittest.TestCase):
 
-    @patch('builtins.input', side_effect=["1", "1", "1"])  # Set to 1 = attack, can be changed to 2/3
+    @patch(
+        "builtins.input", side_effect=["1", "1", "1"]
+    )  # Set to 1 = attack, can be changed to 2/3
     def test_battle_victory(self, mock_input):
         player = Player("TestFighter", "Warrior")
         enemy = Enemy("Skeleton")
         result = battle(player, enemy)
         self.assertIn(result, ["won", "lost", "fled"])
+
 
 # Save/Load test
 class TestSaveLoad(unittest.TestCase):
@@ -83,7 +88,9 @@ class TestSaveLoad(unittest.TestCase):
         self.assertEqual(loaded_player.player_class, self.player.player_class)
         self.assertEqual(loaded_room, 4)
 
+
 # Test invalid inputs
+
 
 class TestErrorHandling(unittest.TestCase):
 
@@ -94,5 +101,6 @@ class TestErrorHandling(unittest.TestCase):
     @patch("builtins.input", side_effect=["", "  ", "Hero"])
     def test_name_retry_on_empty_input(self, mock_input):
         from main import get_player_name
+
         name = get_player_name()
         self.assertEqual(name, "Hero")

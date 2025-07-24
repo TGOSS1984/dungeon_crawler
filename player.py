@@ -2,17 +2,18 @@ import random
 
 # Player / class stats
 
+
 class Player:
     CLASS_STATS = {
         "Warrior": {"max_hp": 120, "attack": 15, "defence": 10, "potions": 2},
         "Rogue": {"max_hp": 100, "attack": 18, "defence": 7, "potions": 3},
-        "Mage": {"max_hp": 80, "attack": 22, "defence": 5, "potions": 4}
+        "Mage": {"max_hp": 80, "attack": 22, "defence": 5, "potions": 4},
     }
 
-    def __init__(self,name,player_class):
+    def __init__(self, name, player_class):
         if player_class not in Player.CLASS_STATS:
             raise ValueError(f"Invalid class: {player_class}")
-    
+
         self.name = name
         self.player_class = player_class
         stats = Player.CLASS_STATS[player_class]
@@ -34,7 +35,7 @@ class Player:
         damage = max(amount - self.defence, 1)
         self.current_hp = max(self.current_hp - damage, 0)
         return damage
-    
+
     # Healing logic - heals for random amount between 15 & 30 hp & decrements potions if greater than 0 by 1 once used
 
     def heal(self):
@@ -45,9 +46,9 @@ class Player:
             return heal_amount
         else:
             return 0
-        
+
     # function for adding items to inventory
-        
+
     def add_to_inventory(self, item):
         self.inventory.append(item)
 
@@ -58,7 +59,9 @@ class Player:
         print(f"HP: {self.current_hp}/{self.max_hp}")
         print(f"Attack: {self.attack} | Defence: {self.defence}")
         print(f"Potions: {self.potions} | Gold: {self.gold}")
-        print(f"Inventory: {', '.join(self.inventory) if self.inventory else 'Empty'}\n")
+        print(
+            f"Inventory: {', '.join(self.inventory) if self.inventory else 'Empty'}\n"
+        )
 
     def to_dict(self):
         return {
@@ -70,9 +73,9 @@ class Player:
             "defence": self.defence,
             "potions": self.potions,
             "gold": self.gold,
-            "inventory": self.inventory
+            "inventory": self.inventory,
         }
-    
+
     # data to support save/load via JSON
 
     @classmethod
