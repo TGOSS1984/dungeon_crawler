@@ -44,13 +44,16 @@ def main():
     print_intro()
     # Save/Load function
     choice = input("Do you want to load a saved game? (y/n): ").strip().lower()
+    player = None
+    room_count = 0
+
     if choice == "y":
-        player = load_game()
+        player, room_count = load_game()
         if not player:
             print("\nNo save found or failed to load. Starting new game...\n")
             player = None
-    else:
-        player = None
+            room_count = 0
+
 
     if not player:
         name = get_player_name()
@@ -67,7 +70,7 @@ def main():
     # Connect dungeon game flow to main game loop
     input("Press Enter to enter the dungeon...\n")
 
-    result = enter_dungeon(player)
+    result = enter_dungeon(player, room_count)
 
     print("\n=== Final Outcome ===")
     if result == "victory":
