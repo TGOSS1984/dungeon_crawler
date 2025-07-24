@@ -51,8 +51,18 @@ def main():
     print(f"\nYou have chosen the path of the {player_class}. Good luck, {name}!")
     player.show_stats()
 
-    # Placeholder for dungeon loop
+    # Connect dungeon game flow to main game loop
     input("Press Enter to enter the dungeon...\n")
+
+    result = enter_dungeon(player)
+
+    print("\n=== Final Outcome ===")
+    if result == "victory":
+        print(f"🏆 Congratulations {player.name}, you survived the Crypt of Shadows!")
+    elif result == "death":
+        print(f"💀 {player.name} perished in the crypt. Your journey ends here.")
+    else:
+        print("You fled or exited unexpectedly.")
 
 if __name__ == "__main__":
     main()
