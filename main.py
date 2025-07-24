@@ -41,17 +41,27 @@ def choose_class():
 
 def main():
     print_intro()
-    name = get_player_name()
-    player_class = choose_class()
-    
-    try:
-        player = Player(name, player_class)
-    except ValueError as e:
-        print(f"Error: {e}")
-        sys.exit(1)
+    # Save/Load function
+    choice = input("Do you want to load a saved game? (y/n): ").strip().lower()
+    if choice == "y":
+        player = load_game()
+        if not player:
+            print("\nNo save found or failed to load. Starting new game...\n")
+            player = None
+    else:
+        player = None
 
-    print(f"\nYou have chosen the path of the {player_class}. Good luck, {name}!")
-    player.show_stats()
+    if not player:
+        name = get_player_name()
+        player_class = choose_class()
+        try:
+            player = Player(name, player_class)
+        except ValueError as e:
+            print(f"Error: {e}")
+            sys.exit(1)
+
+        print(f"\nYou have chosen the path of the {player.player_class}. Good luck, {player.name}!")
+        player.show_stats()
 
     # Connect dungeon game flow to main game loop
     input("Press Enter to enter the dungeon...\n")
