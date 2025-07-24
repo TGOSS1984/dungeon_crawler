@@ -50,3 +50,20 @@ def enter_dungeon(player):
             print("The room is eerily silent. Nothing happens...")
 
         player.show_stats()
+
+    # Boss room
+    print("\n💀 You enter a vast chamber... the final boss awaits!\n")
+    boss = Enemy("Undead King")
+    boss.max_hp = 100
+    boss.current_hp = 100
+    boss.attack = 20
+    boss.defense = 8
+
+    result = battle(player, boss)
+
+    if result == "won":
+        print("\n🏆 You have defeated the Undead King and escaped the crypt!")
+        return "victory"
+    else:
+        print("\nThe darkness consumes you...")
+        return "death"
