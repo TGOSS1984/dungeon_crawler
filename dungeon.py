@@ -57,7 +57,7 @@ def enter_dungeon(player):
     boss.max_hp = 100
     boss.current_hp = 100
     boss.attack = 20
-    boss.defense = 8
+    boss.defence = 8
 
     result = battle(player, boss)
 
