@@ -13,7 +13,7 @@ class Player:
         if player_class not in Player.CLASS_STATS:
             raise ValueError(f"Invalid class: {player_class}")
     
-        self.name = Name
+        self.name = name
         self.player_class = player_class
         stats = Player.CLASS_STATS[player_class]
 

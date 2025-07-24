@@ -1,4 +1,5 @@
 from player import Player
+from dungeon import enter_dungeon
 import sys
 
 # Game intro
