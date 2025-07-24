@@ -21,3 +21,22 @@ class Enemy:
         self.current_hp = stats["hp"]
         self.attack = stats["attack"]
         self.defence = stats["defence"]
+
+# Enemy damage calculation and show stats
+
+    def is_alive(self):
+        return self.current_hp > 0
+
+    def take_damage(self, amount):
+        damage = max(amount - self.defence, 1)
+        self.current_hp = max(self.current_hp - damage, 0)
+        return damage
+
+    def attack_value(self):
+        return random.randint(self.attack - 2, self.attack + 2)
+
+    def show_stats(self):
+        print(f"\n=== Enemy: {self.name} ===")
+        print(f"HP: {self.current_hp}/{self.max_hp}")
+        print(f"Attack: {self.attack} | Defence: {self.defence}\n")
+
