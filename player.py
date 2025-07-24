@@ -1,6 +1,6 @@
 import random
 
-#Player / class stats
+# Player / class stats
 
 class Player:
     CLASS_STATS = {
@@ -9,23 +9,23 @@ class Player:
         "Mage": {"max_hp": 80, "attack": 22, "defence": 5, "potions": 4}
     }
 
-    def__init__(self,name,player_class):
-    if player_class not in Player.CLASS_STATS:
-        raise ValueError(f"Invalid class: {player_class}")
+    def __init__(self,name,player_class):
+        if player_class not in Player.CLASS_STATS:
+            raise ValueError(f"Invalid class: {player_class}")
     
-    self.name = Name
-    self.player_class = player_class
-    stats = Player.CLASS_STATS[player_class]
+        self.name = Name
+        self.player_class = player_class
+        stats = Player.CLASS_STATS[player_class]
 
-    self.max_hp = stats["max_hp"]
-    self.current_hp = self.max_hp
-    self.attack = stats["attack"]
-    self.defence = stats["defence"]
-    self.potions = stats["potions"]
-    self.gold = 0
-    self.inventory = []
+        self.max_hp = stats["max_hp"]
+        self.current_hp = self.max_hp
+        self.attack = stats["attack"]
+        self.defence = stats["defence"]
+        self.potions = stats["potions"]
+        self.gold = 0
+        self.inventory = []
 
-    #Damage Calculation - takes defence stat into account
+    # Damage Calculation - takes defence stat into account
 
     def is_alive(self):
         return self.current_hp > 0
@@ -35,7 +35,7 @@ class Player:
         self.current_hp = max(self.current_hp - damage, 0)
         return damage
     
-    #Healing logic - heals for random amount between 15 & 30 hp & decrements potions if greater than 0 by 1 once used
+    # Healing logic - heals for random amount between 15 & 30 hp & decrements potions if greater than 0 by 1 once used
 
     def heal(self):
         if self.potions > 0:
@@ -46,12 +46,12 @@ class Player:
         else:
             return 0
         
-    #function for adding items to inventory
+    # function for adding items to inventory
         
     def add_to_inventory(self, item):
         self.inventory.append(item)
 
-    #Show stats function
+    # Show stats function
 
     def show_stats(self):
         print(f"\n=== {self.name} the {self.player_class} ===")
@@ -73,7 +73,7 @@ class Player:
             "inventory": self.inventory
         }
     
-    #data to support save/load via JSON
+    # data to support save/load via JSON
 
     @classmethod
     def from_dict(cls, data):

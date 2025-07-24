@@ -1,7 +1,7 @@
 from player import Player
 import sys
 
-#Game intro
+# Game intro
 
 def print_intro():
     print("=" * 40)
@@ -10,7 +10,7 @@ def print_intro():
     print("=" * 40)
     print("\nYou must choose your class to begin.\n")
 
-#Prompt player to enter name (prompt for cannot be empty)    
+# Prompt player to enter name (prompt for cannot be empty)   
 
 def get_player_name():
     while True:
@@ -20,7 +20,7 @@ def get_player_name():
         else:
             print("Name cannot be empty. Try again.")
 
-#Choose class function, print error message if not between 1&3
+# Choose class function, print error message if not between 1&3
 
 def choose_class():
     print("\nChoose your class:")
@@ -36,3 +36,23 @@ def choose_class():
             return classes[choice]
         else:
             print("Invalid choice. Please enter 1, 2, or 3.")
+
+def main():
+    print_intro()
+    name = get_player_name()
+    player_class = choose_class()
+    
+    try:
+        player = Player(name, player_class)
+    except ValueError as e:
+        print(f"Error: {e}")
+        sys.exit(1)
+
+    print(f"\nYou have chosen the path of the {player_class}. Good luck, {name}!")
+    player.show_stats()
+
+    # Placeholder for dungeon loop
+    input("Press Enter to enter the dungeon...\n")
+
+if __name__ == "__main__":
+    main()
