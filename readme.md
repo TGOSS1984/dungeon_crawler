@@ -42,6 +42,7 @@ It is meant to mimic 'Rogue-like' gameplay with random room generation and item 
 - Save/load functionality via JSON file
 - Final boss fight after surviving 10 rooms
 - Colored text UI (using `colorama`) for a more immersive experience
+- 'Brick' emjois used for immersion on terminal
 - Defensive input validation and error handling
 - Fully tested core modules (`player.py`, `enemies.py`, `battle.py`, `save_load.py`)
 
@@ -78,7 +79,7 @@ dungeon_crawler/
 ├── package.json
 ├── requirements.txt
 ├── .gitignore
-├── runtime.txt
+├── .python-version
 ├── Procfile
 ├── readme.md
 ├── views/
@@ -120,7 +121,7 @@ dungeon_crawler/
    ```
 4. Run the game:
    ```bash
-   python main.py
+   python run.py
    ```
 ### Running game on Heroku
 
