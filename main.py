@@ -6,17 +6,18 @@ import sys
 
 # Game intro
 
-
 def print_intro():
     print(bold("=" * 40))
-    print(bold("  Welcome to the Crypt of Shadows"))
-    print(bold("      A Dungeon Crawler CLI Game"))
+    print(bold("    ⚔️  Crypt of Shadows Awaits ⚔️"))
+    print(bold("  A Soulbound Dungeon Crawler CLI"))
     print(bold("=" * 40))
-    print("\nYou must choose your class to begin.\n")
-
+    print(
+        "\nThe air stinks of ash and regret. In the darkness, only one truth remains:\n"
+        "\"All who enter must be willing to forget... or be forgotten.\"\n"
+    )
+    print("Choose your burden below.\n")
 
 # Prompt player to enter name (prompt for cannot be empty)
-
 
 def get_player_name():
     while True:
@@ -26,25 +27,28 @@ def get_player_name():
         else:
             print("Name cannot be empty. Try again.")
 
-
-# Choose class function, print error message if not between 1&3
-
+# Choose class function, print error message if not between 1–4
 
 def choose_class():
-    print("\nChoose your class:")
-    print("1. Warrior - High HP & defence")
-    print("2. Rogue   - Balanced & agile")
-    print("3. Mage    - High attack, low defence")
+    print("\nChoose your burden:")
+    print("1. Oathbound Knight   - High vitality, heavy defence")
+    print("2. Shadow Pilgrim     - Nimble and precise, but fragile")
+    print("3. Ashen Scholar      - Wields forgotten flame, frail of body")
+    print("4. Hollow Marksman    - Ranged attacker, cunning and swift")
 
-    classes = {"1": "Warrior", "2": "Rogue", "3": "Mage"}
+    classes = {
+        "1": "Oathbound Knight",
+        "2": "Shadow Pilgrim",
+        "3": "Ashen Scholar",
+        "4": "Hollow Marksman"
+    }
 
     while True:
-        choice = input("Enter class number (1-3): ").strip()
+        choice = input("Enter class number (1-4): ").strip()
         if choice in classes:
             return classes[choice]
         else:
-            print("Invalid choice. Please enter 1, 2, or 3.")
-
+            print("Invalid choice. Please enter 1, 2, 3, or 4.")
 
 def main():
     print_intro()
@@ -71,24 +75,24 @@ def main():
 
         print(
             green(
-                f"\nYou have chosen the path of the {player.player_class}. Good luck, {player.name}!"
+                f"\nYou have chosen the path of the {player.player_class}. May the embers guide you, {player.name}."
             )
         )
         player.show_stats()
 
     # Connect dungeon game flow to main game loop
-    input("Press Enter to enter the dungeon...\n")
+    input("Press Enter to step into the abyss...\n")
 
     result = enter_dungeon(player, room_count)
 
     print("\n=== Final Outcome ===")
     if result == "victory":
-        print(f"🏆 Congratulations {player.name}, you survived the Crypt of Shadows!")
+        print(f"🏆 {player.name}, bearer of burden — you have escaped the Crypt of Shadows.")
     elif result == "death":
-        print(f"💀 {player.name} perished in the crypt. Your journey ends here.")
+        print(f"💀 {player.name} fell into darkness. The crypt claims another soul.")
     else:
-        print("You fled or exited unexpectedly.")
-
+        print("You fled or exited unexpectedly. The crypt waits still...")
 
 if __name__ == "__main__":
     main()
+

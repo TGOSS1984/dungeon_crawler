@@ -7,17 +7,18 @@ import tempfile
 import shutil
 import os
 from save_load import save_game, load_game, SAVE_FILE
+from itertools import cycle
 
 
 # Tests for player & enemy functionality
 class TestPlayer(unittest.TestCase):
 
     def setUp(self):
-        self.player = Player("TestHero", "Warrior")
+        self.player = Player("TestKnight", "Oathbound Knight")
 
     def test_player_creation(self):
-        self.assertEqual(self.player.name, "TestHero")
-        self.assertEqual(self.player.player_class, "Warrior")
+        self.assertEqual(self.player.name, "TestKnight")
+        self.assertEqual(self.player.player_class, "Oathbound Knight")
         self.assertEqual(self.player.current_hp, self.player.max_hp)
 
     def test_take_damage(self):
@@ -34,8 +35,8 @@ class TestPlayer(unittest.TestCase):
         self.assertEqual(self.player.potions, potions_before - 1)
 
     def test_add_to_inventory(self):
-        self.player.add_to_inventory("Gemstone")
-        self.assertIn("Gemstone", self.player.inventory)
+        self.player.add_to_inventory("Cursed Ember")
+        self.assertIn("Cursed Ember", self.player.inventory)
 
 
 class TestEnemy(unittest.TestCase):
@@ -46,7 +47,7 @@ class TestEnemy(unittest.TestCase):
         self.assertNotEqual(enemy.name, "Undead King")  # Boss should be excluded
 
     def test_enemy_damage(self):
-        enemy = Enemy("Goblin")
+        enemy = Enemy("Ashen Wretch")
         hp_before = enemy.current_hp
         damage = enemy.take_damage(10)
         self.assertTrue(damage >= 1)
@@ -58,23 +59,21 @@ if __name__ == "__main__":
 
 
 # Battle loop tests
+
 class TestBattle(unittest.TestCase):
 
-    @patch(
-        "builtins.input", side_effect=["1", "1", "1"]
-    )  # Set to 1 = attack, can be changed to 2/3
+    @patch("builtins.input", side_effect=cycle(["1"]))  # Updated this to cycle through inputs so battle can finished aftre increased enemy hp
     def test_battle_victory(self, mock_input):
-        player = Player("TestFighter", "Warrior")
-        enemy = Enemy("Skeleton")
+        player = Player("Duskblade", "Shadow Pilgrim")
+        enemy = Enemy("Carrion Spawn")
         result = battle(player, enemy)
         self.assertIn(result, ["won", "lost", "fled"])
-
 
 # Save/Load test
 class TestSaveLoad(unittest.TestCase):
 
     def setUp(self):
-        self.player = Player("SaveTester", "Mage")
+        self.player = Player("SaveTester", "Ashen Scholar")
         self.temp_dir = tempfile.mkdtemp()
         self.test_path = os.path.join(self.temp_dir, "save.json")
 
@@ -90,17 +89,15 @@ class TestSaveLoad(unittest.TestCase):
 
 
 # Test invalid inputs
-
-
 class TestErrorHandling(unittest.TestCase):
 
     def test_invalid_class_raises(self):
         with self.assertRaises(ValueError):
             Player("Hero", "InvalidClass")
 
-    @patch("builtins.input", side_effect=["", "  ", "Hero"])
-    def test_name_retry_on_empty_input(self, mock_input):
-        from main import get_player_name
+@patch("builtins.input", side_effect=["", "  ", "Hero"])
+def test_name_retry_on_empty_input(self, mock_input):
+    from main import get_player_name
 
-        name = get_player_name()
-        self.assertEqual(name, "Hero")
+    name = get_player_name()
+    self.assertEqual(name, "Hero")

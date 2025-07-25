@@ -1,14 +1,13 @@
 import random
 
-# Player / class stats
-
+# Player / class stats with a dark fantasy twist
 
 class Player:
     CLASS_STATS = {
-        "Warrior": {"max_hp": 130, "attack": 15, "defence": 10, "potions": 2},
-        "Rogue": {"max_hp": 100, "attack": 18, "defence": 7, "potions": 3},
-        "Mage": {"max_hp": 80, "attack": 22, "defence": 5, "potions": 4},
-        "Archer": {"max_hp": 110, "attack": 17, "defence": 6, "potions": 3},
+        "Oathbound Knight": {"max_hp": 130, "attack": 15, "defence": 10, "potions": 2},
+        "Shadow Pilgrim": {"max_hp": 100, "attack": 18, "defence": 7, "potions": 3},
+        "Ashen Scholar": {"max_hp": 80, "attack": 22, "defence": 5, "potions": 4},
+        "Hollow Marksman": {"max_hp": 110, "attack": 17, "defence": 6, "potions": 3},
     }
 
     def __init__(self, name, player_class):
@@ -27,7 +26,7 @@ class Player:
         self.gold = 0
         self.inventory = []
 
-    # Damage Calculation - takes defence stat into account
+    # Damage calculation - takes defence stat into account
 
     def is_alive(self):
         return self.current_hp > 0
@@ -48,18 +47,18 @@ class Player:
         else:
             return 0
 
-    # function for adding items to inventory
+    # Function for adding items to inventory
 
     def add_to_inventory(self, item):
         self.inventory.append(item)
 
-    # Show stats function
+    # Show stats function with themed formatting
 
     def show_stats(self):
-        print(f"\n=== {self.name} the {self.player_class} ===")
-        print(f"HP: {self.current_hp}/{self.max_hp}")
-        print(f"Attack: {self.attack} | Defence: {self.defence}")
-        print(f"Potions: {self.potions} | Gold: {self.gold}")
+        print(f"\n=== {self.name}, the {self.player_class} ===")
+        print(f"Vitality: {self.current_hp}/{self.max_hp}")
+        print(f"Strength: {self.attack} | Resilience: {self.defence}")
+        print(f"Estus: {self.potions} | Souls: {self.gold}")
         print(
             f"Inventory: {', '.join(self.inventory) if self.inventory else 'Empty'}\n"
         )
@@ -77,7 +76,7 @@ class Player:
             "inventory": self.inventory,
         }
 
-    # data to support save/load via JSON
+    # Data to support save/load via JSON
 
     @classmethod
     def from_dict(cls, data):

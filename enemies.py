@@ -4,15 +4,14 @@ import random
 
 BOSS_NAME = "Undead King"  # define boss so cannot be fought randomly in rooms
 
-
 class Enemy:
     ENEMY_TYPES = {
-        "Skeleton": {"hp": 30, "attack": 8, "defence": 2},
-        "Goblin": {"hp": 40, "attack": 10, "defence": 3},
-        "Dark Mage": {"hp": 50, "attack": 12, "defence": 4},
-        "Orc": {"hp": 60, "attack": 14, "defence": 6},
-        "Wraith": {"hp": 45, "attack": 16, "defence": 2},
-        "Lesser Demon": {"hp": 50, "attack": 15, "defence": 3},
+        "Ashen Wretch": {"hp": 30, "attack": 8, "defence": 2},
+        "Hollow Stalker": {"hp": 40, "attack": 10, "defence": 3},
+        "Disciple of Embers": {"hp": 50, "attack": 12, "defence": 4},
+        "Abyssbound Brute": {"hp": 60, "attack": 14, "defence": 6},
+        "Veilshade Specter": {"hp": 45, "attack": 16, "defence": 2},
+        "Carrion Spawn": {"hp": 50, "attack": 15, "defence": 3},
         BOSS_NAME: {"hp": 100, "attack": 20, "defence": 8},  # end boss stats
     }
 
@@ -45,12 +44,11 @@ class Enemy:
         print(f"HP: {self.current_hp}/{self.max_hp}")
         print(f"Attack: {self.attack} | Defence: {self.defence}\n")
 
-
 # random enemy generator
-
 
 def generate_random_enemy():
     # Exclude the final boss from normal encounters
-    enemy_names = [name for name in Enemy.ENEMY_TYPES if name != "Undead King"]
+    enemy_names = [name for name in Enemy.ENEMY_TYPES if name != BOSS_NAME]
     enemy_name = random.choice(enemy_names)
     return Enemy(enemy_name)
+

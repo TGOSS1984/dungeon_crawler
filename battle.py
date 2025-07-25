@@ -6,58 +6,61 @@ import time
 
 # Enemy appears note with logic for turn based battle, pick from 3 options
 
-
 def battle(player, enemy):
-    print("\n⚔️ A wild", enemy.name, "appears!")
+    print(bold(f"\n⚔️ A wretched {enemy.name} emerges from the shadows..."))
     enemy.show_stats()
 
     while player.is_alive() and enemy.is_alive():
         print("-" * 40)
         print(
-            f"Your HP: {player.current_hp}/{player.max_hp} | Potions: {player.potions}"
+            f"Your Vitality: {player.current_hp}/{player.max_hp} | Estus Flasks: {player.potions}"
         )
-        print(f"{enemy.name}'s HP: {enemy.current_hp}/{enemy.max_hp}")
+        print(f"{enemy.name}'s Essence: {enemy.current_hp}/{enemy.max_hp}")
         print("\nChoose your action:")
-        print("1. Attack")
-        print("2. Use Potion")
+        print("1. Deliver a Strike")
+        print("2. Use Estus Flask")
         print("3. Attempt to Flee")
 
         choice = input("Enter 1, 2 or 3: ").strip()
 
         if choice == "1":
             damage = enemy.take_damage(player.attack)
-            print(bold(f"\nYou strike the {enemy.name} for {damage} damage!"))
+            if damage > 15:
+                print(bold(f"\n⚡ You land a staggering blow! {enemy.name} reels from {damage} damage!"))
+            else:
+                print(f"\nYou slash into the {enemy.name}, dealing {damage} damage.")
         elif choice == "2":
             healed = player.heal()
             if healed > 0:
-                print(green(f"\nYou used a potion and healed for {healed} HP!"))
+                print(green(f"\n✨ You sip from a cracked Estus Flask, restoring {healed} Vitality..."))
             else:
-                print("\nYou have no potions left!")
+                print(red("\nYour flasks are dry. No healing remains."))
         elif choice == "3":
             if random.random() < 0.5:
-                print("\nYou successfully fled from battle!")
+                print(yellow("\nYou retreat into the mist. The enemy fades into the dark..."))
                 return "fled"
             else:
-                print("\nYou failed to flee!")
+                print(red("\nYour escape fails. The way is blocked!"))
         else:
-            print("\nInvalid choice. You hesitate...")
+            print("\nYou hesitate... and the enemy advances.")
             continue
 
-        # Enemy turn if it's still alive
+        # Enemy's turn if still alive
         if enemy.is_alive():
             enemy_attack = enemy.attack_value()
             damage_taken = player.take_damage(enemy_attack)
-            print(red(f"The {enemy.name} attacks and deals {damage_taken} damage!"))
+            print(red(f"The {enemy.name} strikes with fury, dealing {damage_taken} damage!"))
             time.sleep(1)
 
-    # Battle ends - victory or defeat note, if vicory gain gold, random amount between 5 & 15
+    # Battle outcome
     print("\n" + "=" * 40)
     if player.is_alive():
-        print(f"You have defeated the {enemy.name}!")
+        print(green(f"\n✅ The {enemy.name} crumbles to ash."))
         gold_reward = random.randint(5, 15)
         player.gold += gold_reward
-        print(f"You found {gold_reward} gold.")
+        print(yellow(f"You absorb {gold_reward} lost souls."))
         return "won"
     else:
-        print("You have fallen in battle...")
+        print(red("💀 You fall to your knees... and the light fades."))
         return "lost"
+
