@@ -14,8 +14,10 @@ def battle(player, enemy):
     while player.is_alive() and enemy.is_alive():
         print("-" * 40)
         print(
-            f"Your Vitality: {player.current_hp}/{player.max_hp} | Estus Flasks: {player.potions}"
-        )
+            f"Your Vitality: {
+                player.current_hp}/{
+                player.max_hp} | Estus Flasks: {
+                player.potions}")
         print(f"{enemy.name}'s Essence: {enemy.current_hp}/{enemy.max_hp}")
         print("\nChoose your action:")
         print("1. Deliver a Strike")
@@ -29,11 +31,12 @@ def battle(player, enemy):
             if damage > 15:
                 print(
                     bold(
-                        f"\n⚡ You land a staggering blow! {enemy.name} reels from {damage} damage!"
-                    )
-                )
+                        f"\n⚡ You land a staggering blow! {
+                            enemy.name} reels from {damage} damage!"))
             else:
-                print(f"\nYou slash into the {enemy.name}, dealing {damage} damage.")
+                print(
+                    f"\nYou slash into the {
+                        enemy.name}, dealing {damage} damage.")
         elif choice == "2":
             healed = player.heal()
             if healed > 0:

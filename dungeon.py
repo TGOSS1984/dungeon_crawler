@@ -9,7 +9,8 @@ from battle import battle
 def enter_dungeon(player, room_count=0):
     print(bold("\nYou descend into the Crypt of Shadows."))
     print("Ash coats the floor. The silence hums like a curse.")
-    print(f"(Resuming from Room {room_count + 1})\n")  # display room count on load
+    # display room count on load
+    print(f"(Resuming from Room {room_count + 1})\n")
 
     max_rooms = 10  # After 10 rooms, trigger boss
 
@@ -19,7 +20,8 @@ def enter_dungeon(player, room_count=0):
         print(bold(f"\n🧱 Room {room_count}"))
         print("-" * 35)
 
-        room_type = random.choice(["enemy", "treasure", "rest", "trap", "empty"])
+        room_type = random.choice(
+            ["enemy", "treasure", "rest", "trap", "empty"])
 
         if room_type == "enemy":
             enemy = generate_random_enemy()
@@ -35,12 +37,15 @@ def enter_dungeon(player, room_count=0):
             if treasure == "souls":
                 gold_found = random.randint(10, 30)
                 player.gold += gold_found
-                print(yellow(f"You uncover scattered souls. (+{gold_found} Souls)"))
+                print(
+                    yellow(
+                        f"You uncover scattered souls. (+{gold_found} Souls)"))
             elif treasure == "flask":
                 player.potions += 1
                 print(green("You found a crimson Estus Flask."))
             else:
-                item = random.choice(["Withered Key", "Blighted Tome", "Tarnished Gem"])
+                item = random.choice(
+                    ["Withered Key", "Blighted Tome", "Tarnished Gem"])
                 player.add_to_inventory(item)
                 print(f"You found a relic: {item}.")
 
@@ -52,7 +57,8 @@ def enter_dungeon(player, room_count=0):
         elif room_type == "trap":
             trap_damage = random.randint(5, 15)
             player.take_damage(trap_damage)
-            print(red(f"A forgotten rune explodes! You suffer {trap_damage} damage."))
+            print(
+                red(f"A forgotten rune explodes! You suffer {trap_damage} damage."))
 
         else:
             print("Only silence greets you. A void in space... and time.")
@@ -63,8 +69,7 @@ def enter_dungeon(player, room_count=0):
         from save_load import save_game
 
         save_choice = (
-            input("\nWould you like to save your game? (y/n): ").strip().lower()
-        )
+            input("\nWould you like to save your game? (y/n): ").strip().lower())
         if save_choice == "y":
             save_game(player, room_count)
 

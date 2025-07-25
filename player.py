@@ -37,7 +37,8 @@ class Player:
         self.current_hp = max(self.current_hp - damage, 0)
         return damage
 
-    # Healing logic - heals for random amount between 15 & 30 hp & decrements potions if greater than 0 by 1 once used
+    # Healing logic - heals for random amount between 15 & 30 hp & decrements
+    # potions if greater than 0 by 1 once used
 
     def heal(self):
         if self.potions > 0:
@@ -61,8 +62,9 @@ class Player:
         print(f"Strength: {self.attack} | Resilience: {self.defence}")
         print(f"Estus: {self.potions} | Souls: {self.gold}")
         print(
-            f"Inventory: {', '.join(self.inventory) if self.inventory else 'Empty'}\n"
-        )
+            f"Inventory: {
+                ', '.join(
+                    self.inventory) if self.inventory else 'Empty'}\n")
 
     def to_dict(self):
         return {

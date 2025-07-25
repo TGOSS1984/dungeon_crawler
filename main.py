@@ -14,11 +14,11 @@ def print_intro():
     print(bold("=" * 40))
     print(
         "\nThe air stinks of ash and regret. In the darkness, only one truth remains:\n"
-        "\"All who enter must be willing to forget... or be forgotten.\"\n"
-    )
+        "\"All who enter must be willing to forget... or be forgotten.\"\n")
     print("Choose your burden below.\n")
 
 # Prompt player to enter name (prompt for cannot be empty)
+
 
 def get_player_name():
     while True:
@@ -29,6 +29,7 @@ def get_player_name():
             print("Name cannot be empty. Try again.")
 
 # Choose class function, print error message if not between 1–4
+
 
 def choose_class():
     print("\nChoose your burden:")
@@ -50,6 +51,7 @@ def choose_class():
             return classes[choice]
         else:
             print("Invalid choice. Please enter 1, 2, 3, or 4.")
+
 
 def main():
     print_intro()
@@ -76,9 +78,9 @@ def main():
 
         print(
             green(
-                f"\nYou have chosen the path of the {player.player_class}. May the embers guide you, {player.name}."
-            )
-        )
+                f"\nYou have chosen the path of the {
+                    player.player_class}. May the embers guide you, {
+                    player.name}."))
         player.show_stats()
 
     # Connect dungeon game flow to main game loop
@@ -88,11 +90,16 @@ def main():
 
     print("\n=== Final Outcome ===")
     if result == "victory":
-        print(f"🏆 {player.name}, bearer of burden — you have escaped the Crypt of Shadows.")
+        print(
+            f"🏆 {
+                player.name}, bearer of burden — you have escaped the Crypt of Shadows.")
     elif result == "death":
-        print(f"💀 {player.name} fell into darkness. The crypt claims another soul.")
+        print(
+            f"💀 {
+                player.name} fell into darkness. The crypt claims another soul.")
     else:
         print("You fled or exited unexpectedly. The crypt waits still...")
+
 
 if __name__ == "__main__":
     main()

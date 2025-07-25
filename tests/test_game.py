@@ -44,7 +44,8 @@ class TestEnemy(unittest.TestCase):
     def test_generate_random_enemy(self):
         enemy = generate_random_enemy()
         self.assertIsInstance(enemy, Enemy)
-        self.assertNotEqual(enemy.name, "Undead King")  # Boss should be excluded
+        # Boss should be excluded
+        self.assertNotEqual(enemy.name, "Undead King")
 
     def test_enemy_damage(self):
         enemy = Enemy("Ashen Wretch")
@@ -63,9 +64,9 @@ if __name__ == "__main__":
 
 class TestBattle(unittest.TestCase):
 
-    @patch(
-        "builtins.input", side_effect=cycle(["1"])
-    )  # Updated this to cycle through inputs so battle can finished aftre increased enemy hp
+    # Updated this to cycle through inputs so battle can finished aftre
+    # increased enemy hp
+    @patch("builtins.input", side_effect=cycle(["1"]))
     def test_battle_victory(self, mock_input):
         player = Player("Duskblade", "Shadow Pilgrim")
         enemy = Enemy("Carrion Spawn")
