@@ -2,6 +2,7 @@ import random
 
 # Player / class stats with a dark fantasy twist
 
+
 class Player:
     CLASS_STATS = {
         "Oathbound Knight": {"max_hp": 130, "attack": 15, "defence": 10, "potions": 2},

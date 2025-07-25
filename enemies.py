@@ -4,6 +4,7 @@ import random
 
 BOSS_NAME = "Undead King"  # define boss so cannot be fought randomly in rooms
 
+
 class Enemy:
     ENEMY_TYPES = {
         "Ashen Wretch": {"hp": 30, "attack": 8, "defence": 2},
@@ -44,11 +45,12 @@ class Enemy:
         print(f"HP: {self.current_hp}/{self.max_hp}")
         print(f"Attack: {self.attack} | Defence: {self.defence}\n")
 
+
 # random enemy generator
+
 
 def generate_random_enemy():
     # Exclude the final boss from normal encounters
     enemy_names = [name for name in Enemy.ENEMY_TYPES if name != BOSS_NAME]
     enemy_name = random.choice(enemy_names)
     return Enemy(enemy_name)
-

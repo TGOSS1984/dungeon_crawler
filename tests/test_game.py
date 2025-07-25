@@ -60,14 +60,18 @@ if __name__ == "__main__":
 
 # Battle loop tests
 
+
 class TestBattle(unittest.TestCase):
 
-    @patch("builtins.input", side_effect=cycle(["1"]))  # Updated this to cycle through inputs so battle can finished aftre increased enemy hp
+    @patch(
+        "builtins.input", side_effect=cycle(["1"])
+    )  # Updated this to cycle through inputs so battle can finished aftre increased enemy hp
     def test_battle_victory(self, mock_input):
         player = Player("Duskblade", "Shadow Pilgrim")
         enemy = Enemy("Carrion Spawn")
         result = battle(player, enemy)
         self.assertIn(result, ["won", "lost", "fled"])
+
 
 # Save/Load test
 class TestSaveLoad(unittest.TestCase):
@@ -94,6 +98,7 @@ class TestErrorHandling(unittest.TestCase):
     def test_invalid_class_raises(self):
         with self.assertRaises(ValueError):
             Player("Hero", "InvalidClass")
+
 
 @patch("builtins.input", side_effect=["", "  ", "Hero"])
 def test_name_retry_on_empty_input(self, mock_input):

@@ -62,7 +62,9 @@ def enter_dungeon(player, room_count=0):
         # Ask if the player wants to save
         from save_load import save_game
 
-        save_choice = input("\nWould you like to save your game? (y/n): ").strip().lower()
+        save_choice = (
+            input("\nWould you like to save your game? (y/n): ").strip().lower()
+        )
         if save_choice == "y":
             save_game(player, room_count)
 
@@ -79,7 +81,11 @@ def enter_dungeon(player, room_count=0):
     result = battle(player, boss)
 
     if result == "won":
-        print(green("\n🏆 You have shattered the Undead King's will and escaped the Crypt of Shadows!"))
+        print(
+            green(
+                "\n🏆 You have shattered the Undead King's will and escaped the Crypt of Shadows!"
+            )
+        )
         return "victory"
     else:
         print(red("\nThe crypt claims another soul."))
