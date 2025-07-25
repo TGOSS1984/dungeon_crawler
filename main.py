@@ -6,6 +6,7 @@ import sys
 
 # Game intro
 
+
 def print_intro():
     print(bold("=" * 40))
     print(bold("    ⚔️  Crypt of Shadows Awaits ⚔️"))
