@@ -4,15 +4,15 @@ This is a turn-based dungeon crawler built entirely in Python for the command li
 It runs in the mock terminal on Heroku.
 
 The player explores a cursed crypt, fights horrors from the abyss, collects relics, and faces off against a final boss — the Undead King. The game is driven by classes, functions, loops, file I/O, and a touch of dark fantasy.
-The game is driven by classes, functions, loops, file I/O, and a bit of randomness.
+It is meant to mimic 'Rogue-like' gameplay with random room generation and item collections.
 
-[Github (repo) link to project]()
+[Github (repo) link to project](https://github.com/TGOSS1984/dungeon_crawler)
 
-[Heroku Link to project]()
+[Heroku Link to project](https://crypt-of-shadows-python-game-fccd0cae9fda.herokuapp.com/)
 
 **Image from Heroku on Terminal**
 
-![Image of game screen]()
+![Image of game screen](assets/screenshots/game_terminal_mockup.PNG)
 
 ---
 
@@ -64,6 +64,7 @@ The game is driven by classes, functions, loops, file I/O, and a bit of randomne
 ```
 dungeon_crawler/
 │
+├── run.py
 ├── main.py
 ├── player.py
 ├── enemies.py
@@ -71,10 +72,17 @@ dungeon_crawler/
 ├── dungeon.py
 ├── save_load.py
 ├── utils.py
+├── index.js
+├── package.json
 ├── requirements.txt
 ├── .gitignore
-├── .python-version
+├── runtime.txt
 ├── Procfile
+├── views/
+│   ├── index.html
+│   └── layout.html
+├── contollers/
+│   └── default.js
 ├── data/
 │   └── save.json
 ├── assets/
@@ -115,11 +123,7 @@ dungeon_crawler/
 
 This game is terminal-based, so it's not meant to be played in a web browser.
 
-To run the game:
-
-```bash
-heroku run python main.py --app crypt-of-shadows-python-game
-```
+However, with code institutes mock terminal setup it can be played here [Heroku Link to project](https://crypt-of-shadows-python-game-fccd0cae9fda.herokuapp.com/)
 
 ---
 
@@ -133,7 +137,7 @@ All core features are covered in `tests/test_game.py`:
 - Save/load tested using temporary file handling
 - Error cases (e.g. invalid class selection, empty name input) are also tested
 
-Run tests with:
+Run tests (in terminal) with:
 
 ```bash
 python -m unittest discover tests
@@ -142,9 +146,22 @@ python -m unittest discover tests
 python -m unittest tests/test_game.py
 ```
 
-**Tested in Python code linter**
+### Tested in Python code linter
 
+Code throughout the project has been checked and cleaned to ensure it meets **PEP8 standards**.
 
+- **[pep8ci.herokuapp.com](https://pep8ci.herokuapp.com/#)** was used for manual checks.
+
+- **`black`** was installed and used to auto-format the project:  
+  Run `pip install black` and `black .`
+
+Examples of some of the issues I came across using manual python code checks:
+
+- `E501`: **Line too long**
+- `E122`: **Continuation line missing indentation**
+- `E302`: **Expected 2 blank lines before top-level function/class**
+- `W291`: **Trailing whitespace**
+- `W293`: **Blank line contains whitespace**
 
 ###  Bugs I Encountered (and fixed) & Manual Testing
 
@@ -222,7 +239,7 @@ pip freeze > requirements.txt
    - Enable automatic deploys if desired
    - Click **Deploy Branch**
 
-5. **Open App** once deployed (``)
+5. **Open App** once deployed (`https://crypt-of-shadows-python-game-fccd0cae9fda.herokuapp.com/`)
 
 
 ---
