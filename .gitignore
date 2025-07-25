@@ -8,3 +8,4 @@ data/save.json
 Thumbs.db
 data/save.json
 .cache/
+creds.json
