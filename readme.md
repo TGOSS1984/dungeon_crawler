@@ -1,6 +1,6 @@
 # Crypt of Shadows – A Python Dungeon Crawler CLI Game
 
-This is a turn-based dungeon crawler built entirely in Python for the command line.  
+Crypt of Shadows is a turn-based dungeon crawler built entirely in Python for the command line.  
 It runs in the mock terminal on Heroku.
 
 The player explores a cursed crypt, fights horrors from the abyss, collects relics, and faces off against a final boss — the Undead King. The game is driven by classes, functions, loops, file I/O, and a touch of dark fantasy.
@@ -19,11 +19,13 @@ It is meant to mimic 'Rogue-like' gameplay with random room generation and item 
 ## Table of Contents
 
 - [Features](#features)
-- [Features](#features)
-- [Features](#features)
-- [Features](#features)
-- [Features](#features)
-
+- [File Structure](#file-structure)
+- [Technologies Used](#technologies-used)
+- [Installation VsCode](#installation-vscode)
+- [Testing](#testing)
+- [Development Notes](#development-notes)
+- [Deployment](#deployment)
+- [Credits](#credits)
 
 ---
 
@@ -46,14 +48,14 @@ It is meant to mimic 'Rogue-like' gameplay with random room generation and item 
 ### How to Play
 
 - Follow prompts to enter your name and select a class
-- Navigate room by room, choose whether to fight, use potions, or flee
+- Navigate room by room, choose whether to fight, use estus, or flee
 - After each room, you’ll be asked if you want to save your progress
 - The game ends when you die, defeat the boss, or manually exit
 
 ### Features for future development
 
 - Make more use for picked up items
-- Add a shop to spend souls could be added to a room randomly
+- Add a shop to spend collected souls, could be added to a room randomly
 - Add further classes - have more variety between them, starting item, special move etc
 - Add a midway point boss, and make the boss generator random
 
@@ -100,10 +102,11 @@ dungeon_crawler/
 - `colorama` for terminal styling
 - `unittest` and `mock` for testing
 - JSON for saving/loading game state
+- black & autopep8 for formatting
 
 ---
 
-##  Installation & Setup for vscode
+##  Installation VsCode
 
 1. Clone this repo
 2. Create a virtual environment and activate it:
@@ -120,7 +123,6 @@ dungeon_crawler/
    python main.py
    ```
 ### Running game on Heroku
-
 
 This game is terminal-based, so it's not meant to be played in a web browser.
 
@@ -164,9 +166,16 @@ Examples of some of the issues I came across using manual python code checks:
 - `W291`: **Trailing whitespace**
 - `W293`: **Blank line contains whitespace**
 
+As black did not fully fix all of the formatting I also installed autopep8 to support with missing indentation, trailling whitespace, blank lines, expected 2 lines etc.
+
+- **`autopep8`** was installed and used to auto-format the project:  
+  Once installed, run `pip install autopep8` and `autopep8 --in-place --aggressive --aggressive --recursive .`
+
+
 ###  Bugs I Encountered (and fixed) & Manual Testing
 
 Examples below of bugs I encountered and ultimately fixed. Alongside these fixes regular print statements were used to try and troubleshoot any issues as they arose.
+VsCode terminal was used often as it sometimes pin pointed the file & the line where potential issues were
 
 **Boss Appeared Randomly in Early Rooms**
 Originally, the "Undead King" could spawn in regular rooms (not just the end).  
@@ -188,6 +197,9 @@ Got a `NameError` on player creation because I accidentally capitalized `Name`.
 Forgot to import `enter_dungeon` correctly into `main.py`, which broke the game loop.  
 Added the import and that fixed it
 
+**Battle test Issue**
+When testing the battle function there was originally a finite list of mock inputs. If the battle took longer than the list of mock inputs the test would fail. The fix was to replace the finite list with an infinite iterator to simulate the player attacking every turn.
+
 ---
 
 ##  Development Notes
@@ -202,10 +214,11 @@ Added the import and that fixed it
 ##  Deployment
 
 This game is CLI-based and can run in any terminal that supports Python 3.  
+
 **VSCode**
 
 - Code was written using VSCode
-- Folder structure all main .py files found in root. Along with requirements.txt, .gitingore, .python-version. Assests folder contains screenshots for readme, tests folder contains the .py tests file. Data folder cotnains the .json save file.
+- Folder structure all main .py files found in root. Along with requirements.txt, .gitingore, .python-version. Assests folder contains screenshots for readme, tests folder contains the .py tests file. Data folder contains the .json save file.
 
 **GitHub**
 
@@ -218,34 +231,20 @@ This game is CLI-based and can run in any terminal that supports Python 3.
 
 **Deploy to Heroku**
 
-1. **Create **`` in the root directory:
-
-```
-web: gunicorn run:app
-```
-
-2. **Add **``** to requirements.txt**:
-
-```bash
-pip install gunicorn
-pip freeze > requirements.txt
-```
-
-3. **Commit and push to GitHub**
-
-4. **On Heroku dashboard**:
-
-   - Create a new app
-   - Connect your GitHub repo under **Deploy > Deployment method**
-   - Enable automatic deploys if desired
-   - Click **Deploy Branch**
-
-5. **Open App** once deployed (`https://crypt-of-shadows-python-game-fccd0cae9fda.herokuapp.com/`)
-
+- Ensure entry point is run.py file
+- Create a Procfile in the project root app
+- Add buildpacks via Heroku dashboard, heroku/python & heroku/node/js
+- Set config variable , settings > config vars > KEY:PORT VALUE:8000
+- Push project to github ensuring the following files are present, run.py/requirements.txt/Procfile
+- Copnnect GitHub repo to Heroku. In Heroku app > Deploy tab, connect repo, enable auto deploys (if required), click deploy branch
+- Click 'View App' to play. Game will open in a web based terminal
 
 ---
 
 ## Credits
 
+- Built by: [Tom Goss](https://github.com/TGOSS1984)
+- ai was used in certain sections of readme for formatting purposes
 
+---
 
