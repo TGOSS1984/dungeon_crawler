@@ -6,6 +6,14 @@ It runs in the mock terminal on Heroku.
 The player explores a cursed crypt, fights horrors from the abyss, collects relics, and faces off against a final boss — the Undead King. The game is driven by classes, functions, loops, file I/O, and a touch of dark fantasy.
 The game is driven by classes, functions, loops, file I/O, and a bit of randomness.
 
+[Github (repo) link to project]()
+
+[Heroku Link to project]()
+
+**Image from Heroku on Terminal**
+
+![Image of game screen]()
+
 ---
 
 ## Table of Contents
