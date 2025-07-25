@@ -5,9 +5,10 @@ import random
 
 class Player:
     CLASS_STATS = {
-        "Warrior": {"max_hp": 120, "attack": 15, "defence": 10, "potions": 2},
+        "Warrior": {"max_hp": 130, "attack": 15, "defence": 10, "potions": 2},
         "Rogue": {"max_hp": 100, "attack": 18, "defence": 7, "potions": 3},
         "Mage": {"max_hp": 80, "attack": 22, "defence": 5, "potions": 4},
+        "Archer": {"max_hp": 110, "attack": 17, "defence": 6, "potions": 3},
     }
 
     def __init__(self, name, player_class):

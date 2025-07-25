@@ -12,6 +12,7 @@ class Enemy:
         "Dark Mage": {"hp": 50, "attack": 12, "defence": 4},
         "Orc": {"hp": 60, "attack": 14, "defence": 6},
         "Wraith": {"hp": 45, "attack": 16, "defence": 2},
+        "Lesser Demon": {"hp": 50, "attack": 15, "defence": 3},
         BOSS_NAME: {"hp": 100, "attack": 20, "defence": 8},  # end boss stats
     }
 
