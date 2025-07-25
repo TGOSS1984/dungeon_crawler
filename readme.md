@@ -110,6 +110,16 @@ dungeon_crawler/
    ```bash
    python main.py
    ```
+### Running game on Heroku
+
+
+This game is terminal-based, so it's not meant to be played in a web browser.
+
+To run the game:
+
+```bash
+heroku run python main.py --app crypt-of-shadows-python-game
+```
 
 ---
 
