@@ -78,10 +78,11 @@ dungeon_crawler/
 ├── .gitignore
 ├── runtime.txt
 ├── Procfile
+├── readme.md
 ├── views/
 │   ├── index.html
 │   └── layout.html
-├── contollers/
+├── controllers/
 │   └── default.js
 ├── data/
 │   └── save.json
@@ -102,7 +103,7 @@ dungeon_crawler/
 
 ---
 
-##  Installation & Setup
+##  Installation & Setup for vscode
 
 1. Clone this repo
 2. Create a virtual environment and activate it:
