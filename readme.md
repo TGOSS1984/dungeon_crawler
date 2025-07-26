@@ -18,6 +18,7 @@ It is meant to mimic 'Rogue-like' gameplay with random room generation and item 
 
 ## Table of Contents
 
+- [Project Purpose](#project-purpose)
 - [Features](#features)
 - [File Structure](#file-structure)
 - [Technologies Used](#technologies-used)
@@ -26,6 +27,21 @@ It is meant to mimic 'Rogue-like' gameplay with random room generation and item 
 - [Development Notes](#development-notes)
 - [Deployment](#deployment)
 - [Credits](#credits)
+
+---
+
+## Project Purpose
+
+There were two main goals in the creation of the Crypt of Shadows project: 
+
+1) To build a command line application with the main technology being python. The aim was to include and show case some standard programming constructs such as -  flow control, iteration, selection, functions, object-oriented programming and data structures
+2) To create a dungeon crawler/'rogue-like' game that is inspired by the atmospheric tension and lore-rich combat of Dark Souls and Demon’s Souls
+
+The project aims to :
+
+- Demonstrate Python proficiency through modular, testable, and PEP8-compliant code.
+- Create an immersive user experience using branching encounters, item mechanics, and Souls-like themes.
+- Provide a deployable, CLI-based game that runs in-browser via Heroku using Node.js terminal emulation.
 
 ---
 
@@ -48,10 +64,11 @@ It is meant to mimic 'Rogue-like' gameplay with random room generation and item 
 
 ### How to Play
 
-- Follow prompts to enter your name and select a class
+- Follow prompts to enter your name and select a class (pressing enter to proceed, picking a class from numbers 1-4)
 - Navigate room by room, choose whether to fight, use estus, or flee
+- If you eneter a ranom battle you select from options 1,2,3 (attack, use estus, flee)
 - After each room, you’ll be asked if you want to save your progress
-- The game ends when you die, defeat the boss, or manually exit
+- The game ends when you die, defeat the boss, or manually exit (The finla boss is fought at the end once you have reached room 10)
 
 ### Features for future development
 
@@ -245,7 +262,7 @@ This game is CLI-based and can run in any terminal that supports Python 3.
 ## Credits
 
 - Built by: [Tom Goss](https://github.com/TGOSS1984)
-- ai was used in certain sections of readme for formatting purposes
+- ai was used to support in certain sections of readme for formatting purposes
 
 ---
 
