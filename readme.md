@@ -58,7 +58,7 @@ The project aims to :
 - Save/load functionality via JSON file
 - Final boss fight after surviving 10 rooms
 - Colored text UI (using `colorama`) for a more immersive experience
-- 'Brick' emjois used for immersion on terminal
+- 'Brick' emojis used for immersion on terminal
 - Defensive input validation and error handling
 - Fully tested core modules (`player.py`, `enemies.py`, `battle.py`, `save_load.py`)
 
@@ -254,7 +254,7 @@ This game is CLI-based and can run in any terminal that supports Python 3.
 - Add buildpacks via Heroku dashboard, heroku/python & heroku/node/js
 - Set config variable , settings > config vars > KEY:PORT VALUE:8000
 - Push project to github ensuring the following files are present, run.py/requirements.txt/Procfile
-- Copnnect GitHub repo to Heroku. In Heroku app > Deploy tab, connect repo, enable auto deploys (if required), click deploy branch
+- Connect GitHub repo to Heroku. In Heroku app > Deploy tab, connect repo, enable auto deploys (if required), click deploy branch
 - Click 'View App' to play. Game will open in a web based terminal
 
 ---
