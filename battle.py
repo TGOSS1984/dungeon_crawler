@@ -26,6 +26,8 @@ def battle(player, enemy):
 
         choice = input("Enter 1, 2 or 3: ").strip()
 
+        # Choices for battle from 1-3, each choice also has varied outcomes
+
         if choice == "1":
             damage = enemy.take_damage(player.attack)
             if damage > 15:
@@ -48,7 +50,7 @@ def battle(player, enemy):
             else:
                 print(red("\nYour flasks are dry. No healing remains."))
         elif choice == "3":
-            if random.random() < 0.5:
+            if random.random() < 0.5:  # 50% chance to flee
                 print(
                     yellow(
                         "\nYou retreat into the mist. The enemy fades into the dark..."

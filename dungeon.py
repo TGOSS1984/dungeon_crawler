@@ -20,6 +20,8 @@ def enter_dungeon(player, room_count=0):
         print(bold(f"\n🧱 Room {room_count}"))
         print("-" * 35)
 
+        # Trigger random room generation, 5 potential options
+
         room_type = random.choice(
             ["enemy", "treasure", "rest", "trap", "empty"])
 
@@ -32,10 +34,10 @@ def enter_dungeon(player, room_count=0):
             elif result == "fled":
                 continue
 
-        elif room_type == "treasure":
+        elif room_type == "treasure":  # In treasure room random choice of 3 types 
             treasure = random.choice(["souls", "flask", "relic"])
             if treasure == "souls":
-                gold_found = random.randint(10, 30)
+                gold_found = random.randint(10, 30) # random number between 10-30
                 player.gold += gold_found
                 print(
                     yellow(
@@ -50,12 +52,12 @@ def enter_dungeon(player, room_count=0):
                 print(f"You found a relic: {item}.")
 
         elif room_type == "rest":
-            healed = random.randint(10, 25)
+            healed = random.randint(10, 25) # random number between 10-25
             player.current_hp = min(player.current_hp + healed, player.max_hp)
             print(f"You find a cold sanctuary. (+{healed} Vitality)")
 
         elif room_type == "trap":
-            trap_damage = random.randint(5, 15)
+            trap_damage = random.randint(5, 15) # random number between 5-15
             player.take_damage(trap_damage)
             print(
                 red(f"A forgotten rune explodes! You suffer {trap_damage} damage."))

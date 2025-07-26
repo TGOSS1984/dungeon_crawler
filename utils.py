@@ -1,3 +1,5 @@
+# Used for import colorama for coloured text 
+
 from colorama import Fore, Style, init
 
 init(autoreset=True)
