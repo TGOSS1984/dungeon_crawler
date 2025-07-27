@@ -67,9 +67,9 @@ The project aims to :
 - Follow prompts to enter your name and select a class (pressing enter to proceed, picking a class from numbers 1-4)
 - Navigate room by room, choose whether to fight, use estus, or flee
 - If you eneter a ranom battle you select from options 1,2,3 (attack, use estus, flee)
-- After each room, you’ll be asked if you want to save your progress
-- The game ends when you die, defeat the boss, or manually exit (The finla boss is fought at the end once you have reached room 10)
-- To resest the game: If using Heroku link, click 'Run Program'. If using terminal, hit control + c keys. Then type 'pyhton run.py' in terminal
+- After each room, you’ll be asked if you want to save your progress (type y/n depending on if you would like to save or not )
+- The game ends when you die, defeat the boss, or manually exit (The final boss is fought at the end once you have reached room 10)
+- To reset the game: If using Heroku link, click 'Run Program'. If using terminal, hit control + c keys. Then type 'python run.py' in terminal
 
 ### Features for future development
 
@@ -120,6 +120,8 @@ dungeon_crawler/
 ##  Technologies Used
 
 - Python 3
+- HTMl (Provided by code institute for the mock terminal)
+- Javascript (Provided by code institute for the mock terminal)
 - `colorama` for terminal styling
 - `unittest` and `mock` for testing
 - JSON for saving/loading game state
@@ -221,7 +223,7 @@ Added the import and that fixed it
 **Battle test Issue**
 When testing the battle function there was originally a finite list of mock inputs. If the battle took longer than the list of mock inputs the test would fail. The fix was to replace the finite list with an infinite iterator to simulate the player attacking every turn.
 
-Further to the above bugs, later in my project I decided to tidy up the file structure a bit. I created the app folder to place all of the .py files in it (whilst keeping run.py in the main root). Once I did this the game would not run through the terminal...After troubleshooting this there were two things I did in order to fix the issue. First, I added a '__init__.py' file to the app folder to make pyhton know this was a 'package'. Secondly, because adding the '__inti__.py' did not immediately resolve the issue I had to delete the '__pycache__' file in the main root. This finally resolved the issue and the game could be run from terminally normally once more. I temporarily created a test_imports.py file to help with this.
+Further to the above bugs, later in my project I decided to tidy up the file structure a bit. I created the app folder to place all of the .py files in it (whilst keeping run.py in the main root). Once I did this the game would not run through the terminal...After troubleshooting this there were two things I did in order to fix the issue. First, I added a '__init__.py' file to the app folder to make python know this was a 'package'. Secondly, because adding the '__inti__.py' did not immediately resolve the issue I had to delete the '__pycache__' file in the main root. This finally resolved the issue and the game could be run from terminal normally once more. I temporarily created a test_imports.py file to help troubleshoot this.
 
 ---
 
@@ -241,7 +243,7 @@ This game is CLI-based and can run in any terminal that supports Python 3.
 **VSCode**
 
 - Code was written using VSCode
-- Folder structure all main .py files found in root. Along with requirements.txt, .gitingore, .python-version. Assests folder contains screenshots for readme, tests folder contains the .py tests file. Data folder contains the .json save file.
+- Folder structure: The run.py (entry point) requirements.txt, .gitingore, .python-version, index.js, package.json, Procfile, readme.md all exist in the main root. All main .py files can be found in the app folder. Assests folder contains screenshots for readme, tests folder contains the .py tests file. Data folder contains the .json save file. Views folder contains the html for the mock terminal. Controllers contains the js for the mock terminal.
 
 **GitHub**
 
@@ -268,6 +270,8 @@ This game is CLI-based and can run in any terminal that supports Python 3.
 
 - Built by: [Tom Goss](https://github.com/TGOSS1984)
 - ai was used to support in certain sections of readme for formatting purposes
+- Code Institute for the code for the mock terminal
+- Fromsoft for game theme inspiration & descriptions
 
 ---
 
