@@ -69,6 +69,7 @@ The project aims to :
 - If you eneter a ranom battle you select from options 1,2,3 (attack, use estus, flee)
 - After each room, you’ll be asked if you want to save your progress
 - The game ends when you die, defeat the boss, or manually exit (The finla boss is fought at the end once you have reached room 10)
+- To resest the game: If using Heroku link, click 'Run Program'. If using terminal, hit control + c keys. Then type 'pyhton run.py' in terminal
 
 ### Features for future development
 
@@ -219,6 +220,8 @@ Added the import and that fixed it
 
 **Battle test Issue**
 When testing the battle function there was originally a finite list of mock inputs. If the battle took longer than the list of mock inputs the test would fail. The fix was to replace the finite list with an infinite iterator to simulate the player attacking every turn.
+
+Further to the above bugs, later in my project I decided to tidy up the file structure a bit. I created the app folder to place all of the .py files in it (whilst keeping run.py in the main root). Once I did this the game would not run through the terminal...After troubleshooting this there were two things I did in order to fix the issue. First, I added a '__init__.py' file to the app folder to make pyhton know this was a 'package'. Secondly, because adding the '__inti__.py' did not immediately resolve the issue I had to delete the '__pycache__' file in the main root. This finally resolved the issue and the game could be run from terminally normally once more. I temporarily created a test_imports.py file to help with this.
 
 ---
 
