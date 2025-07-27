@@ -1,6 +1,6 @@
 import json
 import os
-from player import Player
+from app.player import Player
 
 SAVE_FILE = "data/save.json"
 

@@ -1,7 +1,7 @@
-from utils import bold, green, red, yellow  # for text cols
-from save_load import save_game, load_game
-from player import Player
-from dungeon import enter_dungeon
+from app.utils import bold, green, red, yellow  # for text cols
+from app.save_load import save_game, load_game
+from app.player import Player
+from app.dungeon import enter_dungeon
 import sys
 
 # Game intro

@@ -1,12 +1,12 @@
 import unittest
-from player import Player
-from enemies import generate_random_enemy, Enemy
+from app.player import Player
+from app.enemies import generate_random_enemy, Enemy
 from unittest.mock import patch
-from battle import battle
+from app.battle import battle
 import tempfile
 import shutil
 import os
-from save_load import save_game, load_game, SAVE_FILE
+from app.save_load import save_game, load_game, SAVE_FILE
 from itertools import cycle
 
 
@@ -103,7 +103,7 @@ class TestErrorHandling(unittest.TestCase):
 
 @patch("builtins.input", side_effect=["", "  ", "Hero"])
 def test_name_retry_on_empty_input(self, mock_input):
-    from main import get_player_name
+    from app.main import get_player_name
 
     name = get_player_name()
     self.assertEqual(name, "Hero")

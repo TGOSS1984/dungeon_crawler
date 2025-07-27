@@ -1,7 +1,7 @@
-from utils import red, green, yellow, bold  # for text cols
+from app.utils import red, green, yellow, bold  # for text cols
 import random
-from enemies import generate_random_enemy, Enemy
-from battle import battle
+from app.enemies import generate_random_enemy, Enemy
+from app.battle import battle
 
 # Room generation logic, max rooms 10.
 
@@ -68,7 +68,7 @@ def enter_dungeon(player, room_count=0):
         player.show_stats()
 
         # Ask if the player wants to save
-        from save_load import save_game
+        from app.save_load import save_game
 
         save_choice = (
             input("\nWould you like to save your game? (y/n): ").strip().lower())

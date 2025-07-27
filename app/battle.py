@@ -1,6 +1,6 @@
-from utils import red, green, yellow, bold  # for text cols
-from enemies import Enemy
-from player import Player
+from app.utils import red, green, yellow, bold  # for text cols
+from app.enemies import Enemy
+from app.player import Player
 import random
 import time
 

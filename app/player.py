@@ -5,10 +5,10 @@ import random
 
 class Player:
     CLASS_STATS = {
-        "Oathbound Knight": {"max_hp": 130, "attack": 15, "defence": 10, "potions": 2},
-        "Shadow Pilgrim": {"max_hp": 100, "attack": 18, "defence": 7, "potions": 3},
-        "Ashen Scholar": {"max_hp": 80, "attack": 22, "defence": 5, "potions": 4},
-        "Hollow Marksman": {"max_hp": 110, "attack": 17, "defence": 6, "potions": 3},
+        "Oathbound Knight": {"max_hp": 130, "attack": 17, "defence": 10, "potions": 2},
+        "Shadow Pilgrim": {"max_hp": 100, "attack": 20, "defence": 7, "potions": 3},
+        "Ashen Scholar": {"max_hp": 80, "attack": 24, "defence": 5, "potions": 4},
+        "Hollow Marksman": {"max_hp": 110, "attack": 19, "defence": 6, "potions": 3},
     }
 
     def __init__(self, name, player_class):
