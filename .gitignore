@@ -9,3 +9,9 @@ Thumbs.db
 data/save.json
 .cache/
 creds.json
+.github/
+*.py[cod]
+.venv/
+node_modules/
+.cache/
+env.py
