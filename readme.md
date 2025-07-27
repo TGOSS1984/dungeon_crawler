@@ -72,7 +72,7 @@ The project aims to :
 
 ### Features for future development
 
-- Make more use for picked up items
+- Make more use of picked up items
 - Add a shop to spend collected souls, could be added to a room randomly
 - Add further classes - have more variety between them, starting item, special move etc
 - Add a midway point boss, and make the boss generator random
@@ -85,13 +85,15 @@ The project aims to :
 dungeon_crawler/
 │
 ├── run.py
-├── main.py
-├── player.py
-├── enemies.py
-├── battle.py
-├── dungeon.py
-├── save_load.py
-├── utils.py
+├── app/
+│   ├── __init__.py
+│   ├── main.py
+│   ├── player.py
+│   ├── enemies.py
+│   ├── battle.py
+│   ├── dungeon.py
+│   ├── save_load.py
+│   └──  utils.py
 ├── index.js
 ├── package.json
 ├── requirements.txt
